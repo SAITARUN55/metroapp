@@ -1,49 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-void main() => runApp(
-  MaterialApp(home:GridLayout())
-);
 
-class GridLayout extends StatelessWidget{
+void main() {
+  runApp(new MaterialApp(
+    title: "Metro App",
+    home: new Home(),
+  ));
+}
 
-  List<String> events = [
-    "Hyderabad",
-    "Delhi",
-    "Bangalore",
-    "Mumbai",
-    "Chennai",
-    "Kolkata"
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
+  List<Container> Places = new List();
+
+  var karakter=[
+    {"nama":"Bangalore", "gambar":"blr.jpg"},
+    {"nama":"Chennai", "gambar":"chennai.jpg"},
+    {"nama":"Delhi", "gambar":"delhi.jpg"},
+    {"nama":"Hyderabad", "gambar":"hyd.jpg"},
+    {"nama":"Kolkata", "gambar":"kolkata.jpg"},
+    {"nama":"Mumbai", "gambar":"mumbai.jpg"},
   ];
+
+  _buatlist()async {
+    for (var i=0; i < karakter.length; i++) {
+      final karakternya = karakter[i];
+      final String gambar = karakternya["gambar"];
+      Places.add(
+        new Container(
+          child: new Card( child:
+            new Column(
+              children: <Widget>[
+                new Image.asset("assets/$gambar", fit: BoxFit.cover,),
+                new Text(karakternya["nama"], style: new TextStyle(fontSize: 18.0),)
+              ],
+            )
+          )
+        )
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    _buatlist();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    // Create empty app with background
-    return Scaffold(body: Container(decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage("assets/bg.jpg"),fit: BoxFit.cover),),child: Container(
-      margin: const EdgeInsets.only(top: 120.0),
-      child: GridView(
-        physics: BouncingScrollPhysics(), // Only for iOS
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), // 2 item per row
-        children: events.map((title){
-          //Loop all item in events list
-          return GestureDetector(
-            child: ,
-            onTap: () {
-            //Show Toast
-            Fluttertoast.showToast(
-                msg:title + " click",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 16.0
-            );
-          },);
-        }).toList(),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Metro App",style: new TextStyle(color: Colors.white),),
+
       ),
-    ),));
+      body: new GridView.count(
+          crossAxisCount: 2,
+          children: Places,
+      ),
+    );
   }
 }
+
 
 
