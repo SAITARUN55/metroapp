@@ -9,6 +9,28 @@ class TransportModeDetails extends StatefulWidget {
 }
 
 class _TransportModeDetailsState extends State<TransportModeDetails> {
+  List<TransportModeDetailsOption> tmdetails = [
+    TransportModeDetailsOption(
+      name: "Routes",
+      icon: Icons.map,
+      page: SearchRoutes(),
+    ),
+    TransportModeDetailsOption(
+      name: "Fare Calculator",
+      icon: Icons.map,
+      page: SearchRoutes(),
+    ),
+    TransportModeDetailsOption(
+      name: "Journey Planner",
+      icon: Icons.map,
+      page: SearchRoutes(),
+    ),
+    TransportModeDetailsOption(
+      name: "Metro Map",
+      icon: Icons.map,
+      page: SearchRoutes(),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +38,31 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
         title: Text('Transport Mode Details'),
       ),
       body: Container(
-        child: Center(
-          child: RaisedButton(
-            child: Text('Route finder'),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (_)=> SearchRoutes()));
-            }
-             ),
-           )
-         )
-       );
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Icon(tmdetails[index].icon),
+              title: Text(tmdetails[index].name),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => tmdetails[index].page),
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
   }
+}
+
+class TransportModeDetailsOption {
+  final String name;
+  final IconData icon;
+  final Widget page;
+
+  TransportModeDetailsOption(
+      {@required this.name, @required this.icon, @required this.page});
 }
