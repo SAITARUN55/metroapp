@@ -1,20 +1,43 @@
 import 'package:flutter/material.dart';
-
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    title: "Metro App",
-    home: new Home(),
-  ));
+  runApp(new MyApp());
 }
 
-class Home extends StatefulWidget {
+class MyApp extends StatelessWidget {
   @override
-  _HomeState createState() => _HomeState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: new MainScreen(),
+    );
+  }
 }
 
-class _HomeState extends State<Home> {
+class MainScreen extends StatefulWidget {
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
 
+class _MainScreenState extends State<MainScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+      seconds: 5,
+      backgroundColor: Colors.white,
+      image: Image.asset('assets/ic_launcher-playstore.png'),
+      photoSize: 150.0,
+      navigateAfterSeconds: new HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   List<Container> Places = new List();
 
   var karakter=[
@@ -31,25 +54,25 @@ class _HomeState extends State<Home> {
       final karakternya = karakter[i];
       final String gambar = karakternya["gambar"];
       Places.add(
-        new Container(
-          child: new Card( child:
-            new Column(
-              children: <Widget>[
-                new Image.asset("assets/$gambar", fit: BoxFit.cover,),
-                new Text(karakternya["nama"], style: new TextStyle(fontSize: 18.0),)
-              ],
-            )
+          new Container(
+              child: new Card( child:
+              new Column(
+                children: <Widget>[
+                  new Image.asset("assets/$gambar", fit: BoxFit.cover,),
+                  new Text(karakternya["nama"], style: new TextStyle(fontSize: 18.0),)
+                ],
+              )
+              )
           )
-        )
       );
     }
   }
-
   @override
   void initState() {
     _buatlist();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -58,12 +81,9 @@ class _HomeState extends State<Home> {
 
       ),
       body: new GridView.count(
-          crossAxisCount: 2,
-          children: Places,
+        crossAxisCount: 2,
+        children: Places,
       ),
     );
   }
 }
-
-
-
