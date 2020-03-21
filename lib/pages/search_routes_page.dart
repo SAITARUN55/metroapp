@@ -12,12 +12,12 @@ class _SearchRoutesPageState extends State<SearchRoutesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Routes'),
+        title: Text('Routes'),
       ),
       body: Container(
         child: Center(
           child: RaisedButton(
-            child: Text('From and To stations'),
+            child: Text('List of all the lines'),
             onPressed: (){
               //Navigator.push(context, MaterialPageRoute(builder: (_)=> TransportModeDetails()));
             }

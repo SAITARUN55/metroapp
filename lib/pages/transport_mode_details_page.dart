@@ -13,7 +13,7 @@ class TransportModeDetailsPage extends StatefulWidget {
 class _TransportModeDetailsPageState extends State<TransportModeDetailsPage> {
   List<TransportModeDetailsOption> tmdetails = [
     TransportModeDetailsOption(
-      name: "Find Routes",
+      name: "Routes",
       icon: Icons.search,
       page: SearchRoutesPage(),
     ),
@@ -22,11 +22,6 @@ class _TransportModeDetailsPageState extends State<TransportModeDetailsPage> {
       icon: Icons.timeline,
       page: PlanJourneyPage(),
     ),
-    // TransportModeDetailsOption(
-    //   name: "Fare Calculator",
-    //   icon: Icons.attach_money,
-    //   page: SearchRoutes(),
-    // ),
     TransportModeDetailsOption(
       name: "Metro Map",
       icon: Icons.map,
