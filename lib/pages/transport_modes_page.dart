@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'transport_mode_details.dart';
-import 'search_routes.dart';
+import 'package:metroapp/pages/search_routes_page.dart';
+import 'package:metroapp/pages/transport_mode_details_page.dart';
 
-class TransportModes extends StatefulWidget {
-  TransportModes({Key key}) : super(key: key);
+class TransportModesPage extends StatefulWidget {
+  TransportModesPage({Key key}) : super(key: key);
 
   @override
-  _TransportModesState createState() => _TransportModesState();
+  _TransportModesPageState createState() => _TransportModesPageState();
 }
 
-class _TransportModesState extends State<TransportModes> {
+class _TransportModesPageState extends State<TransportModesPage> {
 
   List<TransportMode> list=[
-    TransportMode(title:"Metro",iconData:Icons.title,page:SearchRoutes()),
-    TransportMode(title:"Bus",iconData:Icons.access_alarm,page:SearchRoutes()),
-    TransportMode(title:"Train",iconData:Icons.print,page:SearchRoutes())
+    TransportMode(title:"Metro",iconData:Icons.title,page:SearchRoutesPage()),
+    TransportMode(title:"Bus",iconData:Icons.access_alarm,page:SearchRoutesPage()),
+    TransportMode(title:"Train",iconData:Icons.print,page:SearchRoutesPage())
   ];
 
   @override
@@ -57,7 +57,7 @@ class _TransportModesState extends State<TransportModes> {
 
               onTap: (){
 
-                Navigator.push(context, MaterialPageRoute(builder: (_)=> TransportModeDetails()));
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> TransportModeDetailsPage()));
 
               }
           );

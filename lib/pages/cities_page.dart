@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:metroapp/screens/transport_modes.dart';
 import 'package:metroapp/widgets/app_drawer.dart';
 
-class Home extends StatefulWidget {
+import 'transport_modes_page.dart';
+
+class CitiesPage extends StatefulWidget {
   final fragmentTitles = [
     "About",
     "Routes",
@@ -30,10 +31,10 @@ class Home extends StatefulWidget {
   ];
 
   @override
-  _HomeState createState() => _HomeState();
+  _CitiesPageState createState() => _CitiesPageState();
 }
 
-class _HomeState extends State<Home> {
+class _CitiesPageState extends State<CitiesPage> {
   List<Container> Places = new List();
 
   var karakter = [
@@ -66,7 +67,7 @@ class _HomeState extends State<Home> {
         )),
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => TransportModes()));
+              context, MaterialPageRoute(builder: (_) => TransportModesPage()));
         },
       )));
     }

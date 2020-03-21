@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SearchRoutes extends StatefulWidget {
-  SearchRoutes({Key key}) : super(key: key);
+class SearchRoutesPage extends StatefulWidget {
+  SearchRoutesPage({Key key}) : super(key: key);
 
   @override
-  _SearchRoutesState createState() => _SearchRoutesState();
+  _SearchRoutesPageState createState() => _SearchRoutesPageState();
 }
 
-class _SearchRoutesState extends State<SearchRoutes> {
+class _SearchRoutesPageState extends State<SearchRoutesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

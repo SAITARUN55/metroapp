@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:metroapp/screens/plan_journey_page.dart';
-import 'package:metroapp/screens/search_routes.dart';
+import 'package:metroapp/pages/plan_journey_page.dart';
+import 'package:metroapp/pages/search_routes_page.dart';
 
-class TransportModeDetails extends StatefulWidget {
-  TransportModeDetails({Key key}) : super(key: key);
+class TransportModeDetailsPage extends StatefulWidget {
+  TransportModeDetailsPage({Key key}) : super(key: key);
 
   @override
-  _TransportModeDetailsState createState() => _TransportModeDetailsState();
+  _TransportModeDetailsPageState createState() =>
+      _TransportModeDetailsPageState();
 }
 
-class _TransportModeDetailsState extends State<TransportModeDetails> {
+class _TransportModeDetailsPageState extends State<TransportModeDetailsPage> {
   List<TransportModeDetailsOption> tmdetails = [
     TransportModeDetailsOption(
       name: "Find Routes",
       icon: Icons.search,
-      page: SearchRoutes(),
+      page: SearchRoutesPage(),
     ),
     TransportModeDetailsOption(
       name: "Journey Planner",
@@ -29,7 +30,7 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
     TransportModeDetailsOption(
       name: "Metro Map",
       icon: Icons.map,
-      page: SearchRoutes(),
+      page: SearchRoutesPage(),
     ),
   ];
   @override
@@ -39,7 +40,7 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
         title: Text('Transport Mode Details'),
       ),
       body: Container(
-       child: ListView.builder(
+        child: ListView.builder(
           itemCount: tmdetails.length,
           itemBuilder: (context, index) {
             return Column(
@@ -47,7 +48,7 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
                 ListTile(
                   leading: Icon(
                     tmdetails[index].icon,
-                    ),
+                  ),
                   title: Text(
                     tmdetails[index].name,
                     style: TextStyle(
@@ -56,7 +57,7 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
                   ),
                   trailing: Icon(
                     Icons.chevron_right,
-                    ),
+                  ),
                   onTap: () {
                     Navigator.push(
                       context,
