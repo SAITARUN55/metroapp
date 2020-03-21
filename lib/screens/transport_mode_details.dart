@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metroapp/screens/plan_journey_page.dart';
 import 'package:metroapp/screens/search_routes.dart';
-import 'package:metroapp/screens/metro_map_page.dart';
 
 class TransportModeDetails extends StatefulWidget {
   TransportModeDetails({Key key}) : super(key: key);
@@ -30,7 +29,7 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
     TransportModeDetailsOption(
       name: "Metro Map",
       icon: Icons.map,
-      page: MetroMapPage(),
+      page: SearchRoutes(),
     ),
   ];
   @override
