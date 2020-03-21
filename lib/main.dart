@@ -6,7 +6,9 @@ import 'package:metroapp/fragments/metro_map_frag.dart';
 import 'package:metroapp/fragments/privacy_policy_frag.dart';
 import 'package:metroapp/fragments/rate_app_frag.dart';
 import 'package:metroapp/fragments/routes_frag.dart';
+import 'package:metroapp/fragments/send_feedback_frag.dart';
 import 'package:metroapp/fragments/settings_frag.dart';
+import 'package:metroapp/fragments/share_frag.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -18,6 +20,8 @@ void main() {
       '/fare': (context) => FareFragment(),
       '/metroMap': (context) => MetroMapFragment(),
       '/settings': (context) => SettingsFragment(),
+      '/sendFeedback': (context) => SendFeedbackFragment(),
+      '/share': (context) => ShareFragment(),
       '/rateTheApp': (context) => RateAppFragment(),
       '/privacyPolicy': (context) => PrivacyPolicyFragment(),
       '/Logout': (context) => LogoutFragment(),
@@ -67,7 +71,18 @@ class _HomeState extends State<Home> {
     "privacyPolicy",
     "Logout"
   ];
-
+  final List<Widget> fragmentIcons = [
+    Icon(Icons.info, color: Colors.blue),
+    Icon(Icons.navigation, color: Colors.blue),
+    Icon(Icons.monetization_on, color: Colors.blue),
+    Icon(Icons.map, color: Colors.blue),
+    Icon(Icons.settings, color: Colors.blue),
+    Icon(Icons.feedback, color: Colors.blue),
+    Icon(Icons.share, color: Colors.blue),
+    Icon(Icons.rate_review, color: Colors.blue),
+    Icon(Icons.security, color: Colors.blue),
+    Icon(Icons.exit_to_app, color: Colors.blue),
+  ];
   _buatlist() async {
     for (var i = 0; i < karakter.length; i++) {
       final karakternya = karakter[i];
@@ -129,6 +144,7 @@ class _HomeState extends State<Home> {
                 return Column(
                   children: <Widget>[
                     ListTile(
+                      leading: fragmentIcons[index],
                       title: Text(
                         '${fragmentTitles[index]}',
                         style: TextStyle(color: Theme.of(context).primaryColor),
