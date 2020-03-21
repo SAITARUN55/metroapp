@@ -7,5 +7,3 @@ void main() {
     home: new Home(),
   ));
 }
-
-
