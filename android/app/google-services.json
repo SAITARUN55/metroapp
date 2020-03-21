@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "987150608850",
+    "firebase_url": "https://metroapp-3ac2d.firebaseio.com",
+    "project_id": "metroapp-3ac2d",
+    "storage_bucket": "metroapp-3ac2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987150608850:android:5db7023139d15751b2000b",
+        "android_client_info": {
+          "package_name": "com.ksaitarun.metroapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987150608850-jglen7e0ib6sfteibej26r2s5vehutd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAObVK7I5igXcJgbdwivgFdxlAXQK_Bp0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987150608850-jglen7e0ib6sfteibej26r2s5vehutd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
