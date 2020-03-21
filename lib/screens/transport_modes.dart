@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'transport_mode_details.dart';
 import 'search_routes.dart';
 
 class TransportModes extends StatefulWidget {
@@ -37,10 +38,28 @@ class _TransportModesState extends State<TransportModes> {
 
                 alignment: Alignment.center,
 
-                child:Icon(list[index].iconData),
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+
+                    Icon(list[index].iconData,size: 40,),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                        child:Text(list[index].title))
+
+
+                  ],
+                )
+
 
               ),
             ),
+
+              onTap: (){
+
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> TransportModeDetails()));
+
+              }
           );
         })
       )
