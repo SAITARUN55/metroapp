@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:metroapp/screens/plan_journey_page.dart';
 import 'package:metroapp/screens/search_routes.dart';
+import 'package:metroapp/screens/metro_map_page.dart';
 
 class TransportModeDetails extends StatefulWidget {
   TransportModeDetails({Key key}) : super(key: key);
@@ -11,24 +13,24 @@ class TransportModeDetails extends StatefulWidget {
 class _TransportModeDetailsState extends State<TransportModeDetails> {
   List<TransportModeDetailsOption> tmdetails = [
     TransportModeDetailsOption(
-      name: "Routes",
-      icon: Icons.map,
-      page: SearchRoutes(),
-    ),
-    TransportModeDetailsOption(
-      name: "Fare Calculator",
-      icon: Icons.map,
+      name: "Find Routes",
+      icon: Icons.search,
       page: SearchRoutes(),
     ),
     TransportModeDetailsOption(
       name: "Journey Planner",
-      icon: Icons.map,
-      page: SearchRoutes(),
+      icon: Icons.timeline,
+      page: PlanJourneyPage(),
     ),
+    // TransportModeDetailsOption(
+    //   name: "Fare Calculator",
+    //   icon: Icons.attach_money,
+    //   page: SearchRoutes(),
+    // ),
     TransportModeDetailsOption(
       name: "Metro Map",
       icon: Icons.map,
-      page: SearchRoutes(),
+      page: MetroMapPage(),
     ),
   ];
   @override
@@ -38,20 +40,36 @@ class _TransportModeDetailsState extends State<TransportModeDetails> {
         title: Text('Transport Mode Details'),
       ),
       body: Container(
-        child: ListView.builder(
+       child: ListView.builder(
           itemCount: tmdetails.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              leading: Icon(tmdetails[index].icon),
-              title: Text(tmdetails[index].name),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () {
-                
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => tmdetails[index].page),
-                );
-              },
+            return Column(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(
+                    tmdetails[index].icon,
+                    ),
+                  title: Text(
+                    tmdetails[index].name,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.chevron_right,
+                    ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => tmdetails[index].page),
+                    );
+                  },
+                ),
+                Divider(
+                  height: 15,
+                  color: Colors.grey.shade800,
+                ),
+              ],
             );
           },
         ),
