@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
       final String gambar = karakternya["gambar"];
       Places.add(
         new Container(
-          child: new Card( child:
+          child: new Card(child:
             new Column(
               children: <Widget>[
                 new Image.asset("assets/$gambar", fit: BoxFit.cover,),
