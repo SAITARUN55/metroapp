@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metroapp/pages/transport_modes_page.dart';
+import 'package:metroapp/widgets/app_drawer.dart';
 
 class CitiesPage extends StatefulWidget {
   @override
@@ -97,53 +98,7 @@ class _CitiesPageState extends State<CitiesPage> {
           style: new TextStyle(color: Colors.white),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'Metro App',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListView.builder(
-              itemCount: fragmentTitles.length,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: fragmentIcons[index],
-                      title: Text(
-                        '${fragmentTitles[index]}',
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        Navigator.pushNamed(
-                            context, '/${fragmentRoutes[index]}');
-                      },
-                    ),
-                    Divider(
-                      height: 1,
-                      thickness: 1,
-                    ),
-                  ],
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: AppDrawer(fragmentTitles: fragmentTitles, fragmentRoutes: fragmentRoutes, fragmentIcons: fragmentIcons),
       body: new GridView.count(
         crossAxisCount: 2,
         children: Places,
