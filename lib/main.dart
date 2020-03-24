@@ -10,12 +10,15 @@ import 'package:metroapp/fragments/send_feedback_frag.dart';
 import 'package:metroapp/fragments/settings_frag.dart';
 import 'package:metroapp/pages/cities_page.dart';
 import 'package:metroapp/fragments/share_frag.dart';
+import 'package:metroapp/pages/intro_slider.dart';
+
 
 void main() {
   runApp(new MaterialApp(
     title: "Metro App",
     routes: {
-      '/': (context) => CitiesPage(),
+      '/': (context) => IntroSlider(),
+//      '/': (context) => CitiesPage(),
       '/about': (context) => AboutFragment(),
       '/routes': (context) => RoutesFragment(),
       '/fare': (context) => FareFragment(),
