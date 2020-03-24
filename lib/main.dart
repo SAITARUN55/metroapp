@@ -1,5 +1,4 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:metroapp/fragments/about_frag.dart';
 import 'package:metroapp/fragments/fare_frag.dart';
@@ -10,6 +9,7 @@ import 'package:metroapp/fragments/rate_app_frag.dart';
 import 'package:metroapp/fragments/routes_frag.dart';
 import 'package:metroapp/fragments/send_feedback_frag.dart';
 import 'package:metroapp/fragments/settings_frag.dart';
+import 'package:metroapp/pages/auth_page.dart';
 import 'package:metroapp/pages/cities_page.dart';
 import 'package:metroapp/fragments/share_frag.dart';
 
@@ -19,7 +19,8 @@ void main() {
     new MaterialApp(
       title: "Metro App",
       routes: {
-        '/': (context) => CitiesPage(),
+        // '/': (context) => CitiesPage(),
+        '/': (context) => AuthPage(),
         '/about': (context) => AboutFragment(),
         '/routes': (context) => RoutesFragment(),
         '/fare': (context) => FareFragment(),
@@ -31,9 +32,6 @@ void main() {
         '/privacyPolicy': (context) => PrivacyPolicyFragment(),
         '/Logout': (context) => LogoutFragment(),
       },
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
-      ],
     ),
   );
 }
