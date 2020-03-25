@@ -12,6 +12,8 @@ import 'package:metroapp/fragments/settings_frag.dart';
 import 'package:metroapp/pages/auth_page.dart';
 import 'package:metroapp/pages/cities_page.dart';
 import 'package:metroapp/fragments/share_frag.dart';
+import 'package:metroapp/providers/user_auth.dart';
+import 'package:provider/provider.dart';
 
 FirebaseAnalytics analytics = FirebaseAnalytics();
 void main() {
@@ -20,7 +22,7 @@ void main() {
       title: "Metro App",
       routes: {
         // '/': (context) => CitiesPage(),
-        '/': (context) => AuthPage(),
+        '/': (context) => HandleCurrentScreen(),
         '/about': (context) => AboutFragment(),
         '/routes': (context) => RoutesFragment(),
         '/fare': (context) => FareFragment(),
@@ -34,4 +36,26 @@ void main() {
       },
     ),
   );
+}
+
+class HandleCurrentScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => UserAuth.instance(),
+      child: Consumer(
+        builder: (context, UserAuth user, _) {
+          switch (user.status) {
+            case Status.Uninitialized:
+              return AuthPage();
+            case Status.Unauthenticated:
+            case Status.Authenticating:
+              return AuthPage();
+            case Status.Authenticated:
+              return CitiesPage(user: user.user);
+          }
+        },
+      ),
+    );
+  }
 }

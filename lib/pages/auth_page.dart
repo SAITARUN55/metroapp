@@ -1,11 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:metroapp/providers/user_auth.dart';
 import 'package:metroapp/widgets/login_auth_card.dart';
+import 'package:provider/provider.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
+  @override
+  _AuthPageState createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  final _key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+
+    final user = Provider.of<UserAuth>(context);
     return Scaffold(
+      key: _key,
       // resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
@@ -51,16 +64,24 @@ class AuthPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      CircleAvatar(
-                        radius: 36,
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Container(
-                            padding: EdgeInsets.all(4),
-                            child: Text("Google"),
-                          ),
-                        ),
-                      ),
+                      user.status == Status.Authenticating
+                          ? Center(child: CircularProgressIndicator())
+                          : InkWell(
+                              child: CircleAvatar(
+                                radius: 36,
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: Container(
+                                    padding: EdgeInsets.all(4),
+                                    child: Text("Google"),
+                                  ),
+                                ),
+                              ),
+                              onTap: () => user
+                                  .signInWithGoogle()
+                                  .then((FirebaseUser user) => print(user))
+                                  .catchError((e) => print(e)),
+                            ),
                       CircleAvatar(
                         radius: 36,
                         child: FittedBox(
