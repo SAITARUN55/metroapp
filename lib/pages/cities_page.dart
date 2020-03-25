@@ -105,7 +105,8 @@ class _CitiesPageState extends State<CitiesPage> {
       drawer: AppDrawer(
           fragmentTitles: fragmentTitles,
           fragmentRoutes: fragmentRoutes,
-          fragmentIcons: fragmentIcons),
+          fragmentIcons: fragmentIcons,
+          user: widget.user),
       body: new GridView.count(
         crossAxisCount: 2,
         children: Places,
