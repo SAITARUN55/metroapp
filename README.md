@@ -1,5 +1,9 @@
 # MetroApp
 
+![Issues](https://img.shields.io/github/issues/SAITARUN55/metroapp)
+![Forks](https://img.shields.io/github/forks/SAITARUN55/metroapp)
+![Stars](https://img.shields.io/github/stars/SAITARUN55/metroapp)
+[![License](https://img.shields.io/github/license/SAITARUN55/metroapp)](https://github.com/SAITARUN55/metroapp/blob/master/LICENSE)
 This is an app being built using Flutter for Metro Stations across the World. As of now, we are building the Metro Map and the content for Hyderabad, Delhi, Bangalore, Kolkata, Mumbai, Chennai, Dubai, and Singapore. We are trying to implement all these metro places in a Single Application.
 
 
