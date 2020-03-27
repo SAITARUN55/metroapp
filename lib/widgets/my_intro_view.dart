@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metroapp/pages/intro_slider.dart';
 
 class MyIntroView extends StatefulWidget {
   final List<Widget> pages;
@@ -14,6 +15,12 @@ class MyIntroView extends StatefulWidget {
 
   @override
   _MyIntroViewState createState() => _MyIntroViewState();
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
 }
 
 class _MyIntroViewState extends State<MyIntroView> {
