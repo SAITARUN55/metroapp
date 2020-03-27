@@ -35,7 +35,7 @@ class _IntroScreenState extends State<IntroScreen> {
       highlightColorDoneBtn: Color(0x33000000),
 
       // Dot indicator
-      colorDot: Color(0xffD02090),
+      colorDot: Colors.grey,
       colorActiveDot: Color(0xff000000),
       sizeDot: 13.0,
 
@@ -45,7 +45,8 @@ class _IntroScreenState extends State<IntroScreen> {
       },
 
       // Show or hide status bar
-      shouldHideStatusBar: true, backgroundColorAllSlides: Colors.grey,
+      shouldHideStatusBar: true,
+      backgroundColorAllSlides: Colors.grey,
 
       // On tab change completed
       onTabChangeCompleted: this.onTabChangeCompleted,
