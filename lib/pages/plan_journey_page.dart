@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metroapp/pages/journey_page.dart';
+import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:metroapp/models/station.dart';
 
 class PlanJourneyPage extends StatefulWidget {
   PlanJourneyPage({Key key}) : super(key: key);
@@ -9,9 +11,62 @@ class PlanJourneyPage extends StatefulWidget {
 }
 
 class _PlanJourneyPageState extends State<PlanJourneyPage> {
+  GlobalKey<AutoCompleteTextFieldState<Station>> sourceKey = new GlobalKey();
+  GlobalKey<AutoCompleteTextFieldState<Station>> destinationKey = new GlobalKey();
+  
   TextEditingController fromStationController = new TextEditingController();
   TextEditingController toStationController = new TextEditingController();
   TextEditingController temporaryController = new TextEditingController();
+
+  List<Station> stationList = [
+    Station(id: 1, name: 'Nagole'),
+    Station(id: 2, name: 'Uppal'),
+    Station(id: 3, name: 'Stadium'),
+    Station(id: 4, name: 'NGRI'),
+    Station(id: 5, name: 'Habsiguda'),
+    Station(id: 6, name: 'Tarnaka'),
+    Station(id: 7, name: 'Mettuguda'),
+    Station(id: 8, name: 'Sec-East'),
+    Station(id: 9, name: 'Parade Ground'),
+    Station(id: 10, name: 'Paradise'),
+    Station(id: 11, name: 'Rasoolpura'),
+    Station(id: 12, name: 'Prakash Nagar'),
+    Station(id: 13, name: 'Begumpet'),
+    Station(id: 14, name: 'Ameerpet'),
+    Station(id: 15, name: 'Madhura Nagar'),
+    Station(id: 16, name: 'Yusufguda'),
+    Station(id: 17, name: 'Jubilee Road No. 5'),
+    Station(id: 18, name: 'JCP'),
+    Station(id: 19, name: 'Pedamma temple'),
+    Station(id: 20, name: 'Madhapur'),
+    Station(id: 21, name: 'Durgama cheruvu'),
+    Station(id: 22, name: 'Hitech city'),
+    Station(id: 23, name: 'Raidurg'),
+  ];
+
+  // void filterSearchStations(String query){
+  //   List<String> dummySearchList = List<String>();
+  //   dummySearchList.addAll(stationList);
+  //   if(query.isNotEmpty){
+  //     List<String> dummyListData = List<String>();
+  //     dummySearchList.forEach((item){
+  //       if(item.toLowerCase().contains(query.toLowerCase())){
+  //         dummyListData.add(item);
+  //       }
+  //     });
+  //     setState(() {
+  //       stations.clear();
+  //       stations.addAll(dummyListData);
+  //     });
+  //     return;
+  //   }
+  //   else{
+  //     setState(() {
+  //       stations.clear();
+  //       stations.addAll(stationList);
+  //     });
+  //   }
+  // }
 
   List<AvailableRoutes> routeList = [
     AvailableRoutes(
@@ -51,14 +106,34 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                 'From',
                 style: TextStyle(color: Colors.grey),
               ),
-              subtitle: TextFormField(
-                controller: fromStationController,
+              subtitle: AutoCompleteTextField<Station>(
                 style: TextStyle(color: Colors.black, fontSize: 20),
-                maxLines: 1,
+                controller: fromStationController,
                 decoration: InputDecoration(
                   hintText: "Source location",
                   hintStyle: TextStyle(color: Colors.grey),
                 ),
+                itemSubmitted: (item) {
+                  setState(() {
+                    fromStationController.text = item.name;
+                  });
+                },
+                key: sourceKey,
+                suggestions: stationList,
+                itemBuilder: (context, item) {
+                  return Text(item.name);
+                },
+                itemSorter: (a, b) {
+                  return a.name.compareTo(b.name);
+                },
+                itemFilter: (item, query) {
+                  return item.name
+                      .toString()
+                      .toLowerCase()
+                      .startsWith(query.toLowerCase());
+                },
+                suggestionsAmount: 10,
+                clearOnSubmit: false,
               ),
             ),
             Padding(
@@ -83,14 +158,34 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
             ListTile(
               leading: Icon(Icons.location_on, size: 30, color: Colors.red),
               title: Text('To', style: TextStyle(color: Colors.grey)),
-              subtitle: TextFormField(
-                controller: toStationController,
+              subtitle: AutoCompleteTextField<Station>(
                 style: TextStyle(color: Colors.black, fontSize: 20),
-                maxLines: 1,
+                controller: toStationController,
                 decoration: InputDecoration(
                   hintText: "Destination location",
                   hintStyle: TextStyle(color: Colors.grey),
                 ),
+                itemSubmitted: (item) {
+                  setState(() {
+                    toStationController.text = item.name;
+                  });
+                },
+                key: destinationKey,
+                suggestions: stationList,
+                itemBuilder: (context, item) {
+                  return Text(item.name);
+                },
+                itemSorter: (a, b) {
+                  return a.name.compareTo(b.name);
+                },
+                itemFilter: (item, query) {
+                  return item.name
+                      .toString()
+                      .toLowerCase()
+                      .startsWith(query.toLowerCase());
+                },
+                suggestionsAmount: 10,
+                clearOnSubmit: false,
               ),
             ),
             Container(
@@ -100,7 +195,11 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0)),
                 color: Colors.blue,
-                onPressed: () {},
+                onPressed: () {
+                  var from  = stationList[3];
+                  var to = stationList[9];
+               var intermediateStation =   stationList.takeWhile((station)=>station.id >=from.id && station.id <= to.id ).toList();
+                },
                 child: Text(
                   'Plan Journey',
                   style: TextStyle(
