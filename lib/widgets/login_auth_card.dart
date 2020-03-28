@@ -15,7 +15,6 @@ class _LoginAuthCardState extends State<LoginAuthCard> {
     'email': '',
     'password': '',
   };
-  var _isLoading = false;
   final _passwordController = TextEditingController();
 
   @override
@@ -64,9 +63,6 @@ class _LoginAuthCardState extends State<LoginAuthCard> {
                   SizedBox(
                     height: 20,
                   ),
-                  if (_isLoading)
-                    CircularProgressIndicator()
-                  else
                     RaisedButton(
                       child: Text(
                         'LOGIN',
