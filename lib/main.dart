@@ -8,14 +8,16 @@ import 'package:metroapp/fragments/rate_app_frag.dart';
 import 'package:metroapp/fragments/routes_frag.dart';
 import 'package:metroapp/fragments/send_feedback_frag.dart';
 import 'package:metroapp/fragments/settings_frag.dart';
-import 'package:metroapp/pages/cities_page.dart';
 import 'package:metroapp/fragments/share_frag.dart';
+import 'package:metroapp/pages/intro_slider.dart';
+
 
 void main() {
   runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: "Metro App",
     routes: {
-      '/': (context) => CitiesPage(),
+      '/': (context) => IntroScreen(),
       '/about': (context) => AboutFragment(),
       '/routes': (context) => RoutesFragment(),
       '/fare': (context) => FareFragment(),
