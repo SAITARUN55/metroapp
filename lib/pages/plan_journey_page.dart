@@ -12,8 +12,9 @@ class PlanJourneyPage extends StatefulWidget {
 
 class _PlanJourneyPageState extends State<PlanJourneyPage> {
   GlobalKey<AutoCompleteTextFieldState<Station>> sourceKey = new GlobalKey();
-  GlobalKey<AutoCompleteTextFieldState<Station>> destinationKey = new GlobalKey();
-  
+  GlobalKey<AutoCompleteTextFieldState<Station>> destinationKey =
+      new GlobalKey();
+
   TextEditingController fromStationController = new TextEditingController();
   TextEditingController toStationController = new TextEditingController();
   TextEditingController temporaryController = new TextEditingController();
@@ -43,31 +44,7 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
     Station(id: 22, name: 'Hitech city'),
     Station(id: 23, name: 'Raidurg'),
   ];
-
-  // void filterSearchStations(String query){
-  //   List<String> dummySearchList = List<String>();
-  //   dummySearchList.addAll(stationList);
-  //   if(query.isNotEmpty){
-  //     List<String> dummyListData = List<String>();
-  //     dummySearchList.forEach((item){
-  //       if(item.toLowerCase().contains(query.toLowerCase())){
-  //         dummyListData.add(item);
-  //       }
-  //     });
-  //     setState(() {
-  //       stations.clear();
-  //       stations.addAll(dummyListData);
-  //     });
-  //     return;
-  //   }
-  //   else{
-  //     setState(() {
-  //       stations.clear();
-  //       stations.addAll(stationList);
-  //     });
-  //   }
-  // }
-
+  
   List<AvailableRoutes> routeList = [
     AvailableRoutes(
         routeNumber: "XYZ9U",
@@ -121,7 +98,13 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                 key: sourceKey,
                 suggestions: stationList,
                 itemBuilder: (context, item) {
-                  return Text(item.name);
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 4.0, 4.0, 6.0),
+                    child: Text(
+                      item.name,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  );
                 },
                 itemSorter: (a, b) {
                   return a.name.compareTo(b.name);
@@ -173,7 +156,13 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                 key: destinationKey,
                 suggestions: stationList,
                 itemBuilder: (context, item) {
-                  return Text(item.name);
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(10.0, 4.0, 4.0, 6.0),
+                    child: Text(
+                      item.name,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  );
                 },
                 itemSorter: (a, b) {
                   return a.name.compareTo(b.name);
@@ -196,13 +185,22 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                     borderRadius: BorderRadius.circular(50.0)),
                 color: Colors.blue,
                 onPressed: () {
-                  
-                  Station from  = stationList.firstWhere((s)=>s.name == fromStationController.text);
-                  Station to  = stationList.firstWhere((s)=>s.name == toStationController.text);
+                  Station from = stationList
+                      .firstWhere((s) => s.name == fromStationController.text);
+                  Station to = stationList
+                      .firstWhere((s) => s.name == toStationController.text);
                   if (from != null && to != null) {
-               var intermediateStations =   stationList.takeWhile((station)=>station.id >=from.id && station.id <= to.id ).toList();
-               print("route: $intermediateStations");
-                    
+                    var intermediateStations = stationList
+                        .takeWhile((station) =>
+                            (station.id >= from.id && station.id <= to.id) ||
+                            (station.id >= to.id && station.id <= from.id))
+                        .toList();
+                    print('Route:');
+                    for (var i in to.id >= from.id
+                        ? intermediateStations
+                        : intermediateStations.reversed) {
+                      print(i.name);
+                    }
                   }
                 },
                 child: Text(
