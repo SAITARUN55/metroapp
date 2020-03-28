@@ -191,7 +191,7 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                       .firstWhere((s) => s.name == toStationController.text);
                   if (from != null && to != null) {
                     var intermediateStations = stationList
-                        .takeWhile((station) =>
+                        .where((station) =>
                             (station.id >= from.id && station.id <= to.id) ||
                             (station.id >= to.id && station.id <= from.id))
                         .toList();
