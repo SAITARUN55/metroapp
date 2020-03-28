@@ -196,9 +196,14 @@ class _PlanJourneyPageState extends State<PlanJourneyPage> {
                     borderRadius: BorderRadius.circular(50.0)),
                 color: Colors.blue,
                 onPressed: () {
-                  var from  = stationList[3];
-                  var to = stationList[9];
-               var intermediateStation =   stationList.takeWhile((station)=>station.id >=from.id && station.id <= to.id ).toList();
+                  
+                  Station from  = stationList.firstWhere((s)=>s.name == fromStationController.text);
+                  Station to  = stationList.firstWhere((s)=>s.name == toStationController.text);
+                  if (from != null && to != null) {
+               var intermediateStations =   stationList.takeWhile((station)=>station.id >=from.id && station.id <= to.id ).toList();
+               print("route: $intermediateStations");
+                    
+                  }
                 },
                 child: Text(
                   'Plan Journey',
