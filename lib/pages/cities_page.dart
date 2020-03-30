@@ -8,7 +8,7 @@ class CitiesPage extends StatefulWidget {
 }
 
 class _CitiesPageState extends State<CitiesPage> {
-  List<Container> Places = new List();
+  List<Container> places = new List();
 
   var karakter = [
     {"nama": "Bangalore", "gambar": "blr.jpg"},
@@ -60,7 +60,7 @@ class _CitiesPageState extends State<CitiesPage> {
     for (var i = 0; i < karakter.length; i++) {
       final karakternya = karakter[i];
       final String gambar = karakternya["gambar"];
-      Places.add(new Container(
+      places.add(new Container(
           child: GestureDetector(
                       child: new Card(
                 child: new Column(
@@ -101,7 +101,7 @@ class _CitiesPageState extends State<CitiesPage> {
       drawer: AppDrawer(fragmentTitles: fragmentTitles, fragmentRoutes: fragmentRoutes, fragmentIcons: fragmentIcons),
       body: new GridView.count(
         crossAxisCount: 2,
-        children: Places,
+        children: places,
       ),
     );
   }
