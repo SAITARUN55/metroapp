@@ -21,9 +21,6 @@ class _CitiesPageState extends State<CitiesPage> {
 
   final fragmentTitles = [
     "About",
-    "Routes",
-    "Fare",
-    "Metro Map",
     "Settings",
     "Send Feedback",
     "Share",
@@ -34,9 +31,6 @@ class _CitiesPageState extends State<CitiesPage> {
 
   final fragmentRoutes = [
     "about",
-    "routes",
-    "fare",
-    "metroMap",
     "settings",
     "sendFeedback",
     "share",
@@ -46,9 +40,6 @@ class _CitiesPageState extends State<CitiesPage> {
   ];
   final List<Widget> fragmentIcons = [
     Icon(Icons.info, color: Colors.blue),
-    Icon(Icons.navigation, color: Colors.blue),
-    Icon(Icons.monetization_on, color: Colors.blue),
-    Icon(Icons.map, color: Colors.blue),
     Icon(Icons.settings, color: Colors.blue),
     Icon(Icons.feedback, color: Colors.blue),
     Icon(Icons.share, color: Colors.blue),
