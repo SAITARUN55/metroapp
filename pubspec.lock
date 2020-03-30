@@ -136,7 +136,7 @@ packages:
     source: hosted
     version: "1.5.5"
   splashscreen:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: splashscreen
       url: "https://pub.dartlang.org"

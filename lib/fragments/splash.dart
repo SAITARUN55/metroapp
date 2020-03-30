@@ -12,12 +12,12 @@ class _MyAppState extends State<Splash> {
     return new SplashScreen(
         seconds: 14,
         navigateAfterSeconds: '/intro',
-        title: new Text('Welcome to Delhi Metro',
+        title: new Text('Welcome ',
           style: new TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0
           ),),
-        image: new Image.asset('assets/delhimetro.png'),
+        image: new Image.asset('assets/splash.png'),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
