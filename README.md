@@ -16,6 +16,47 @@ This is an app being built using Flutter for Metro Stations across the World. As
 - UI/UX Design skills are appreciable but not mandatory
 - Some idea about Firebase or willingness to learn it
 
+### How to make a Pull Request:
+
+**1.** Fork [this](https://github.com/SAITARUN55/metroapp) repository.
+
+**2.** Clone the forked repository.
+
+```terminal
+git clone https://github.com/<your-github-username>/metroapp
+```
+
+**3.** Navigate to the project directory.
+
+```terminal
+cd metroapp
+```
+
+**4.** Create a new branch.
+
+```terminal
+git checkout -b development
+```
+
+**5.** Make changes in source code.
+
+**6.** Commit your changes.
+
+```terminal
+  git add .
+  git commit -m "<your_commit_message>"
+```
+
+**7.** Push your local branch to the remote repository.
+
+```terminal
+git push -u origin development
+```
+
+**8.** Create a Pull Request!
+
+**Congratulations!**  :boom: Sit and relax, you've made your contribution to [MetroApp]  (https://github.com/SAITARUN55/metroapp) project.
+
 ##  Resources to get started with:
 +  [Dart Programming](https://www.youtube.com/watch?v=Ej_Pcr4uC2Q)
 +  [Flutter Crash Course](https://www.youtube.com/watch?v=pTJJsmejUOQ)
