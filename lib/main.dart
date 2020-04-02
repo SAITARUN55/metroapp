@@ -15,27 +15,28 @@ import 'package:metroapp/navigation_bar_pages/share_nav_page.dart';
 import 'package:metroapp/providers/user_auth.dart';
 import 'package:provider/provider.dart';
 
+import 'pages/intro_slider.dart';
+
 FirebaseAnalytics analytics = FirebaseAnalytics();
 void main() {
-  runApp(
-    new MaterialApp(
-      title: "Metro App",
-      routes: {
-        // '/': (context) => CitiesPage(),
-        '/': (context) => HandleCurrentScreen(),
-        '/about': (context) => AboutFragment(),
-        '/routes': (context) => RoutesFragment(),
-        '/fare': (context) => FareFragment(),
-        '/metroMap': (context) => MetroMapFragment(),
-        '/settings': (context) => SettingsFragment(),
-        '/sendFeedback': (context) => SendFeedbackFragment(),
-        '/share': (context) => ShareFragment(),
-        '/rateTheApp': (context) => RateAppFragment(),
-        '/privacyPolicy': (context) => PrivacyPolicyFragment(),
-        '/Logout': (context) => LogoutFragment(),
-      },
-    ),
-  );
+  runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: "Metro App",
+    routes: {
+      '/': (context) => HandleCurrentScreen(),
+      '/intro': (context) => IntroScreen(),
+      '/about': (context) => AboutFragment(),
+      '/routes': (context) => RoutesFragment(),
+      '/fare': (context) => FareFragment(),
+      '/metroMap': (context) => MetroMapFragment(),
+      '/settings': (context) => SettingsFragment(),
+      '/sendFeedback': (context) => SendFeedbackFragment(),
+      '/share': (context) => ShareFragment(),
+      '/rateTheApp': (context) => RateAppFragment(),
+      '/privacyPolicy': (context) => PrivacyPolicyFragment(),
+      '/Logout': (context) => LogoutFragment(),
+    },
+  ));
 }
 
 class HandleCurrentScreen extends StatelessWidget {
