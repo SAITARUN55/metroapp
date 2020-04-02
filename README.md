@@ -32,12 +32,11 @@ git clone https://github.com/<your-github-username>/metroapp
 cd metroapp
 ```
 
-**4.** Create a new branch.
+**4.** Checkout from master to development branch.
 
 ```terminal
-git checkout -b development
+git checkout development
 ```
-
 **5.** Make changes in source code.
 
 **6.** Commit your changes.
