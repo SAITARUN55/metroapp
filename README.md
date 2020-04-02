@@ -1,5 +1,10 @@
 # MetroApp
 
+![Issues](https://img.shields.io/github/issues/SAITARUN55/metroapp)
+![Forks](https://img.shields.io/github/forks/SAITARUN55/metroapp)
+![Stars](https://img.shields.io/github/stars/SAITARUN55/metroapp)
+[![License](https://img.shields.io/github/license/SAITARUN55/metroapp)](https://github.com/SAITARUN55/metroapp/blob/master/LICENSE)
+
 This is an app being built using Flutter for Metro Stations across the World. As of now, we are building the Metro Map and the content for Hyderabad, Delhi, Bangalore, Kolkata, Mumbai, Chennai, Dubai, and Singapore. We are trying to implement all these metro places in a Single Application.
 
 
@@ -10,6 +15,46 @@ This is an app being built using Flutter for Metro Stations across the World. As
 - Some knowledge of Dart and how to use Flutter is preferrable for a head start.
 - UI/UX Design skills are appreciable but not mandatory
 - Some idea about Firebase or willingness to learn it
+
+### How to make a Pull Request:
+
+**1.** Fork [this](https://github.com/SAITARUN55/metroapp) repository.
+
+**2.** Clone the forked repository.
+
+```terminal
+git clone https://github.com/<your-github-username>/metroapp
+```
+
+**3.** Navigate to the project directory.
+
+```terminal
+cd metroapp
+```
+
+**4.** Checkout from master to development branch.
+
+```terminal
+git checkout development
+```
+**5.** Make changes in source code.
+
+**6.** Commit your changes.
+
+```terminal
+  git add .
+  git commit -m "<your_commit_message>"
+```
+
+**7.** Push your local branch to the remote repository.
+
+```terminal
+git push -u origin development
+```
+
+**8.** Create a Pull Request!
+
+**Congratulations!**  :boom: Sit and relax, you've made your contribution to [MetroApp]  (https://github.com/SAITARUN55/metroapp) project.
 
 ##  Resources to get started with:
 +  [Dart Programming](https://www.youtube.com/watch?v=Ej_Pcr4uC2Q)
