@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:metroapp/pages/transport_modes_page.dart';
 import 'package:metroapp/widgets/app_drawer.dart';
 
 class CitiesPage extends StatefulWidget {
+  final FirebaseUser user;
+  const CitiesPage({Key key, this.user}) : super(key: key);
+
   @override
   _CitiesPageState createState() => _CitiesPageState();
 }
@@ -53,24 +57,24 @@ class _CitiesPageState extends State<CitiesPage> {
       final String gambar = karakternya["gambar"];
       places.add(new Container(
           child: GestureDetector(
-                      child: new Card(
+              child: new Card(
                 child: new Column(
-        children: <Widget>[
-            new Image.asset(
-              "assets/$gambar",
-              fit: BoxFit.cover,
-            ),
-            new Text(
-              karakternya["nama"],
-              style: new TextStyle(fontSize: 18.0),
-            )
-        ],
-      ),),
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (_) => TransportModesPage()));
-        }
-      
-          )));
+                  children: <Widget>[
+                    new Image.asset(
+                      "assets/$gambar",
+                      fit: BoxFit.cover,
+                    ),
+                    new Text(
+                      karakternya["nama"],
+                      style: new TextStyle(fontSize: 18.0),
+                    )
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => TransportModesPage()));
+              })));
     }
   }
 
@@ -89,7 +93,11 @@ class _CitiesPageState extends State<CitiesPage> {
           style: new TextStyle(color: Colors.white),
         ),
       ),
-      drawer: AppDrawer(fragmentTitles: fragmentTitles, fragmentRoutes: fragmentRoutes, fragmentIcons: fragmentIcons),
+      drawer: AppDrawer(
+          fragmentTitles: fragmentTitles,
+          fragmentRoutes: fragmentRoutes,
+          fragmentIcons: fragmentIcons,
+          user: widget.user),
       body: new GridView.count(
         crossAxisCount: 2,
         children: places,
